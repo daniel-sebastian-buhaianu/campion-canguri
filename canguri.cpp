@@ -24,11 +24,11 @@ int celMaiMareDivizorComun(int a, int b)
 }
 int celMaiMicMultipluComun(int a, int b)
 {
-	return a*b/celMaiMareDivizorComun(a, b);
+	return a/celMaiMareDivizorComun(a, b) * b;
 }
 int lungimeMinimaTraseu(int nrCanguri, int lungimeSalt[MAX_CANGURI])
 {
-	int cmmmc, lungimeSaltMaxim, nrSalturi, i;
+	int cmmmc, lungimeSaltMaxim, i;
 	cmmmc = lungimeSaltMaxim = lungimeSalt[0];
 	for (i = 1; i < nrCanguri; i++)
 	{
@@ -36,12 +36,9 @@ int lungimeMinimaTraseu(int nrCanguri, int lungimeSalt[MAX_CANGURI])
 		if (lungimeSalt[i] > lungimeSaltMaxim)
 			lungimeSaltMaxim = lungimeSalt[i];
 	}
-	nrSalturi = cmmmc/lungimeSaltMaxim;
-	if (nrSalturi >= 3)
-		return cmmmc;
-	if (nrSalturi == 2)
-		return cmmmc + lungimeSaltMaxim;
-	return cmmmc * 3;
+	while (cmmmc/lungimeSaltMaxim < 3)
+		cmmmc += lungimeSaltMaxim;
+	return cmmmc;
 }
 void citeste(int & nrCanguri, int lungimeSalt[MAX_CANGURI])
 {
