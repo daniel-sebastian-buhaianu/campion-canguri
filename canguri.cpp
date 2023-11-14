@@ -28,7 +28,7 @@ int celMaiMicMultipluComun(int a, int b)
 }
 int lungimeMinimaTraseu(int nrCanguri, int lungimeSalt[MAX_CANGURI])
 {
-	int cmmmc, lungimeSaltMaxim, i;
+	int cmmmc, lungimeSaltMaxim, i, rezultat;
 	cmmmc = lungimeSaltMaxim = lungimeSalt[0];
 	for (i = 1; i < nrCanguri; i++)
 	{
@@ -36,9 +36,10 @@ int lungimeMinimaTraseu(int nrCanguri, int lungimeSalt[MAX_CANGURI])
 		if (lungimeSalt[i] > lungimeSaltMaxim)
 			lungimeSaltMaxim = lungimeSalt[i];
 	}
-	while (cmmmc/lungimeSaltMaxim < 3)
-		cmmmc += lungimeSaltMaxim;
-	return cmmmc;
+	rezultat = cmmmc;
+	while (rezultat/lungimeSaltMaxim < 3)
+		rezultat += cmmmc;
+	return rezultat;
 }
 void citeste(int & nrCanguri, int lungimeSalt[MAX_CANGURI])
 {
